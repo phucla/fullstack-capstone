@@ -53,7 +53,8 @@ def define_routers(app):
             or appropriate status code indicating reason for failure
     '''
     @app.route('/actors', methods=['GET'])
-    def get_actors():
+    @requires_auth('get:actors')
+    def get_actors(payload):
         try:
             actors = Actors.query.order_by(Actors.id).all()
 
@@ -206,7 +207,8 @@ def define_routers(app):
             or appropriate status code indicating reason for failure
     '''
     @app.route('/movies', methods=['GET'])
-    def get_movies():
+    @requires_auth('get:movies')
+    def get_movies(payload):
         try:
             movies = Movies.query.order_by(Movies.id).all()
 

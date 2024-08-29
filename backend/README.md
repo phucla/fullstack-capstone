@@ -1,4 +1,4 @@
-# Coffee Shop Backend
+# Casting Agency Backend
 
 ## Getting Started
 
@@ -10,7 +10,9 @@ Follow instructions to install the latest version of python for your platform in
 
 #### Virtual Environment
 
-We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [python docs](
+
+)
 
 #### PIP Dependencies
 
@@ -29,6 +31,14 @@ This will install all of the required packages we selected within the `requireme
 - [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./src/database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
 
 - [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
+
+## Set up the Database
+
+With Postgres running, create a `casting_agency` database:
+
+```bash
+createdb casting_agency
+```
 
 ## Running the server
 
@@ -60,28 +70,59 @@ The `--reload` flag will detect file changes and restart the server automaticall
      - Enable RBAC
      - Enable Add Permissions in the Access Token
 5. Create new API permissions:
-   - `get:drinks`
-   - `get:drinks-detail`
-   - `post:drinks`
-   - `patch:drinks`
-   - `delete:drinks`
+   - `get:actors`
+   - `get:actors-detail`
+   - `post:actors`
+   - `patch:actors`
+   - `delete:actors`
+   - `get:movies`
+   - `get:movies-detail`
+   - `post:movies`
+   - `patch:movies`
+   - `delete:movies`
 6. Create new roles for:
-   - Barista
-     - can `get:drinks-detail`
-     - can `get:drinks`
-   - Manager
+   - Casting Assistant
+     - can `get:actors`
+     - can `get:movies`
+   - Casting Director
+     - can `get:actors`
+     - can `get:movies`
+     - can `post:actors`
+     - can `delete:actors`
+     - can `patch:actors`
+     - can `patch:movies`
+   - Executive Producer
      - can perform all actions
 7. Test your endpoints with [Postman](https://getpostman.com).
-   - Register 2 users - assign the Barista role to one and Manager role to the other.
+   - Register 3 users - assign the Casting Assistant, Casting Director and Executive Producer role to.
    - Sign into each account and make note of the JWT.
-   - Import the postman collection `./starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json`
+   - Import the postman collection `./backend/udacity-capstone.postman_collection.json`
    - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
    - Run the collection and correct any errors.
    - Export the collection overwriting the one we've included so that we have your proper JWTs during review!
 
-### Implement The Server
+## Testing
 
-There are `@TODO` comments throughout the `./backend/src`. We recommend tackling the files in order and from top to bottom:
+Write at least one test for the success and at least one error behavior of each endpoint using the unittest library.
 
-1. `./src/auth/auth.py`
-2. `./src/api.py`
+Create the .env file
+To deploy the tests, run
+
+```bash
+dropdb casting_agency_test
+createdb casting_agency_test
+```
+
+```bash
+python test_flaskr.py
+```
+
+### Test result
+
+![Test result](./test%20result.png)
+
+### User
+
+<casting_assistant@user.com>/User@123456
+<casting_director@user.com>/User@123456
+<executive_producer@user.com>/User@123456

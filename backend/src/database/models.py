@@ -2,6 +2,8 @@ import os
 from sqlalchemy import Column, String, Integer, Date, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
+from dotenv import load_dotenv
+load_dotenv()
 
 database_username = os.environ['DB_USER']
 database_password = os.environ['DB_PASSWORD']
