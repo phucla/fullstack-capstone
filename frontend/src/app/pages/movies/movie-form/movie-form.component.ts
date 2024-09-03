@@ -1,30 +1,29 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Actor, ActorsService } from "src/app/services/actors.service";
+import { Movie, MoviesService } from "src/app/services/movies.service";
 import { ModalController } from "@ionic/angular";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
-  selector: "app-actor-form",
-  templateUrl: "./actor-form.component.html",
-  styleUrls: ["./actor-form.component.scss"],
+  selector: "app-movie-form",
+  templateUrl: "./movie-form.component.html",
+  styleUrls: ["./movie-form.component.scss"],
 })
-export class ActorFormComponent implements OnInit {
-  @Input() actor: Actor;
+export class MovieFormComponent implements OnInit {
+  @Input() movie: Movie;
   @Input() isNew: boolean;
 
   constructor(
     public auth: AuthService,
     private modalCtrl: ModalController,
-    private actorsService: ActorsService
+    private moviesService: MoviesService
   ) {}
 
   ngOnInit() {
     if (this.isNew) {
-      this.actor = {
+      this.movie = {
         id: -1,
-        name: "",
-        age: 0,
-        gender: "",
+        title: "",
+        release_date: "",
       };
     }
   }
@@ -38,12 +37,12 @@ export class ActorFormComponent implements OnInit {
   }
 
   saveClicked() {
-    this.actorsService.saveActor(this.actor);
+    this.moviesService.saveMovie(this.movie);
     this.closeModal();
   }
 
   deleteClicked() {
-    this.actorsService.deleteActor(this.actor);
+    this.moviesService.deleteMovie(this.movie);
     this.closeModal();
   }
 }
