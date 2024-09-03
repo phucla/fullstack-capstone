@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="isNew">New Actor Creator</ion-title>
+    <ion-title *ngIf="!isNew">Actor Editor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="actor">
+    <app-actor-graphic [actor]="actor"></app-actor-graphic>
+
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Actor name</ion-label>
+        <ion-input type="text" [(ngModel)]="actor.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Actor Age</ion-label>
+        <ion-input type="text" [(ngModel)]="actor.age" name="age"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Actor gender</ion-label>
+        <ion-input type="text" [(ngModel)]="actor.gender" name="gender"></ion-input>
+      </ion-item>
+
+      <ion-button 
+        [disabled]="!auth.can('delete:actors')"
+        (click)="deleteClicked()">Delete</ion-button><br />
+      <ion-button (click)="closeModal()">Cancel</ion-button>
+      <ion-button 
+        [disabled]="!auth.can('patch:actors') || !auth.can('post:actors')"
+        (click)="saveClicked()">Save</ion-button>
+
+    </form>
+</ion-content>
