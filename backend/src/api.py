@@ -4,7 +4,7 @@ from sqlalchemy import exc
 import json
 from flask_cors import CORS
 
-from .database.models import db_drop_and_create_all, setup_db, Actors, Movies, db
+from .database.models import db_drop_and_create_all, setup_db, Actors, Movies
 from .auth.auth import AuthError, requires_auth
 
 def create_app(test_config=None):
