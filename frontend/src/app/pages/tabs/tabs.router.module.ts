@@ -65,6 +65,10 @@ const routes: Routes = [
     redirectTo: "/tabs/actors",
     pathMatch: "full",
   },
+  {
+    path: "**",
+    redirectTo: "/tabs/actors",
+  },
 ];
 
 @NgModule({
