@@ -17,7 +17,7 @@ const routes: Routes = [
           {
             path: "",
 
-            loadChildren: "../actors/actors.module#ActorsPageModule",
+            loadChildren: "./pages/actors/actors.module#ActorsPageModule",
             pathMatch: "full",
           },
         ],
@@ -32,7 +32,8 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: "../user-page/user-page.module#UserPagePageModule",
+            loadChildren:
+              "./pages/user-page/user-page.module#UserPagePageModule",
             pathMatch: "full",
           },
           {
@@ -52,7 +53,7 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: "../movies/movies.module#MoviesPageModule",
+            loadChildren: "./pages/movies/movies.module#MoviesPageModule",
             pathMatch: "full",
           },
           {
