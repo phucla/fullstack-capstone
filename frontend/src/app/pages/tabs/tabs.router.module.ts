@@ -18,6 +18,11 @@ const routes: Routes = [
                 loadChildren: "../actors/actors.module#ActorsPageModule",
                 pathMatch: "full",
               },
+              {
+                path: "",
+                redirectTo: "/tabs/actors",
+                pathMatch: "full",
+              },
             ],
           },
         ],
@@ -32,6 +37,11 @@ const routes: Routes = [
                 path: "",
                 loadChildren:
                   "../user-page/user-page.module#UserPagePageModule",
+                pathMatch: "full",
+              },
+              {
+                path: "",
+                redirectTo: "/tabs/user-page",
                 pathMatch: "full",
               },
             ],
@@ -49,6 +59,11 @@ const routes: Routes = [
                 loadChildren: "../movies/movies.module#MoviesPageModule",
                 pathMatch: "full",
               },
+              {
+                path: "",
+                redirectTo: "/tabs/movies",
+                pathMatch: "full",
+              },
             ],
           },
         ],
@@ -64,10 +79,6 @@ const routes: Routes = [
     path: "",
     redirectTo: "/tabs/actors",
     pathMatch: "full",
-  },
-  {
-    path: "**",
-    redirectTo: "/tabs/actors",
   },
 ];
 
