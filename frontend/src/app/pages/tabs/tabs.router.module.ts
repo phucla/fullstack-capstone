@@ -9,15 +9,49 @@ const routes: Routes = [
     children: [
       {
         path: "actors",
-        loadChildren: "../actors/actors.module#ActorsPageModule",
+        children: [
+          {
+            path: "",
+            children: [
+              {
+                path: "",
+                loadChildren: "../actors/actors.module#ActorsPageModule",
+                pathMatch: "full",
+              },
+            ],
+          },
+        ],
       },
       {
         path: "user-page",
-        loadChildren: "../user-page/user-page.module#UserPagePageModule",
+        children: [
+          {
+            path: "",
+            children: [
+              {
+                path: "",
+                loadChildren:
+                  "../user-page/user-page.module#UserPagePageModule",
+                pathMatch: "full",
+              },
+            ],
+          },
+        ],
       },
       {
         path: "movies",
-        loadChildren: "../movies/movies.module#MoviesPageModule",
+        children: [
+          {
+            path: "",
+            children: [
+              {
+                path: "",
+                loadChildren: "../movies/movies.module#MoviesPageModule",
+                pathMatch: "full",
+              },
+            ],
+          },
+        ],
       },
       {
         path: "",
