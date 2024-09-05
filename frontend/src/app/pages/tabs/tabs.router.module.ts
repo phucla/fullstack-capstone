@@ -73,6 +73,21 @@ const routes: Routes = [
         redirectTo: "/tabs/actors",
         pathMatch: "full",
       },
+      {
+        path: "/actors",
+        redirectTo: "/tabs/actors",
+        pathMatch: "full",
+      },
+      {
+        path: "/movies",
+        redirectTo: "/tabs/movies",
+        pathMatch: "full",
+      },
+      {
+        path: "user-page",
+        redirectTo: "/tabs/user-page",
+        pathMatch: "full",
+      },
     ],
   },
   {
